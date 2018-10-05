@@ -12,9 +12,6 @@ public class CardScript : MonoBehaviour {
         transform.Find("Portrait").GetComponent<SpriteRenderer>().sprite = data.portrait;
         transform.Find("Card Canvas/Conversion Power").GetComponent<TextMeshProUGUI>().text = "" + data.conversion_power;
         transform.Find("Card Canvas/Faith").GetComponent<TextMeshProUGUI>().text = "" + data.faith;
-
-        //meObject.GetComponentInChildren<SpriteRenderer>().sprite = data.portrait;
-       // GetComponent<SpriteRenderer>().sprite = data.portrait;
 	}
 	
 	// Update is called once per frame

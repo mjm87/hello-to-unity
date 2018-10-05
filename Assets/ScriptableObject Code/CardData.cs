@@ -9,6 +9,4 @@ public class CardData : ScriptableObject
     public float conversion_power;
     public float faith;
     public string name;
-	
-    // private float currentFaith;
 }
