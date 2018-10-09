@@ -8,6 +8,8 @@ public class AIPlayerScript : MonoBehaviour, IPlayer {
 	private GameObject deckObject;
 	private DeckScript deck;
 
+	private CardData[] selected;
+
 	// Use this for initialization 	
 	void Start () {
 		deck = deckObject.GetComponent<DeckScript>();
@@ -29,5 +31,9 @@ public class AIPlayerScript : MonoBehaviour, IPlayer {
 
 	public bool isFinishedSelecting() {
 		return true;
+	}
+
+	public CardData[] GetSelectedCards() {
+		return selected;
 	}
 }

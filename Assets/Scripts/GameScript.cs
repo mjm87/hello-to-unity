@@ -40,6 +40,8 @@ public class GameScript : MonoBehaviour {
 		);			
 
 		// each player plays the cards
+		CardData[] p1_cards = player1.GetSelectedCards();
+		CardData[] p2_cards = player2.GetSelectedCards();
 
 	}
 

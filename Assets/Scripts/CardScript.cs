@@ -12,9 +12,9 @@ public class CardScript : MonoBehaviour {
     private float faith;            // sorta like health
     private float conversion_power; // sorta like damage / attack 
 
-    private Vector3 hoverScale;
-    private Vector3 regularScale;
+    private Vector3 hoverScale, regularScale, originalScale;
 
+    private bool selected = false;
 
 	void Start () {
 
@@ -25,6 +25,7 @@ public class CardScript : MonoBehaviour {
 
         regularScale = transform.localScale;
         hoverScale = regularScale * 1.2f;
+        originalScale = regularScale;
     }
 
     // update the data values on the card
@@ -55,9 +56,19 @@ public class CardScript : MonoBehaviour {
 
     void OnMouseDown() {
         if(inSelectingMode()) {
-            player.Select(cardData);
-            transform.localScale = hoverScale;
-            regularScale = hoverScale;
+            if(!selected) {
+                // "permanently" highlight the card as selected
+                player.Select(cardData);
+                transform.localScale = hoverScale;
+                regularScale = hoverScale;
+                selected = true;
+            } else {
+                // unselect the card
+                player.Deselect(cardData);
+                transform.localScale = originalScale;
+                regularScale = originalScale;
+                selected = false;
+            }
         }
     }
     private bool inSelectingMode() {

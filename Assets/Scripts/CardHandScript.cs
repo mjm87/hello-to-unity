@@ -12,7 +12,7 @@ public class CardHandScript : MonoBehaviour {
 
 	private List<Transform> displayedCards = new List<Transform>();
 
-	public void Display(CardData[] cards) {
+	public void Display(List<CardData> cards) {
 
 		// clean the slate
 		removeDisplayedCards();

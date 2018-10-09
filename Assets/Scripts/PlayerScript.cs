@@ -7,6 +7,7 @@ public class PlayerScript : MonoBehaviour, IPlayer {
 	[SerializeField]
 	private GameObject deckObject;
 	private DeckScript deck;
+	private List<CardData> cards;
 
 	// selecting mode
 	List<CardData> selected;
@@ -27,7 +28,7 @@ public class PlayerScript : MonoBehaviour, IPlayer {
 	}
 
 	public void DrawCards(int numberOfCards){
-		CardData[] cards = deck.DrawCards(numberOfCards);
+		cards = new List<CardData>(deck.DrawCards(numberOfCards));
 		GetComponent<CardHandScript>().Display(cards);
 	}
 
@@ -47,5 +48,17 @@ public class PlayerScript : MonoBehaviour, IPlayer {
 
 	public void Select(CardData card) {
 		selected.Add(card);
+		cards.Remove(card);		// remove card from hand
+	}
+
+	public void Deselect(CardData card) {
+		selected.Remove(card);
+		cards.Add(card);			// add it back to your hand
+	}
+
+	public CardData[] GetSelectedCards(){
+		cards.Reverse();
+		GetComponent<CardHandScript>().Display(cards);
+		return selected.ToArray();
 	}
 }

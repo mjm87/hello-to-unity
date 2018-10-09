@@ -8,4 +8,6 @@ interface IPlayer {
 	void StartSelecting();
 	bool isFinishedSelecting();
 	
+	CardData[] GetSelectedCards();
+	
 }
