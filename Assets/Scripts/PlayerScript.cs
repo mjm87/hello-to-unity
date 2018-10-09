@@ -22,6 +22,7 @@ public class PlayerScript : MonoBehaviour, IPlayer {
 	void Start () {		
 		deck = deckObject.GetComponent<DeckScript>();
 		DoneSelectingButton.gameObject.SetActive(false);
+		cards = new List<CardData>();
 	}
 	
 	// Update is called once per frame
@@ -30,7 +31,9 @@ public class PlayerScript : MonoBehaviour, IPlayer {
 	}
 
 	public void DrawCards(int numberOfCards){
-		cards = new List<CardData>(deck.DrawCards(numberOfCards));
+		foreach(CardData card in deck.DrawCards(numberOfCards)){
+			cards.Add(card);
+		}
 		GetComponent<CardHandScript>().Display(cards);
 	}
 
@@ -46,6 +49,9 @@ public class PlayerScript : MonoBehaviour, IPlayer {
 
 	public void FinishSelecting() {
 		isSelecting = false;
+		foreach(CardData card in selected){
+			deck.Discard(card);
+		}
 	}
 
 	public void Select(CardData card) {
@@ -55,7 +61,7 @@ public class PlayerScript : MonoBehaviour, IPlayer {
 
 	public void Deselect(CardData card) {
 		selected.Remove(card);
-		cards.Add(card);			// add it back to your hand
+		cards.Add(card);		// add it back to your hand
 	}
 
 	public CardData[] GetSelectedCards(){

@@ -54,7 +54,7 @@ public class CardScript : MonoBehaviour {
         transform.localScale = regularScale;
     }
 
-    void OnMouseDown() {
+    void OnMouseUp() {
         if(inSelectingMode()) {
             if(!selected) {
                 // "permanently" highlight the card as selected

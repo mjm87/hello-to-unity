@@ -63,14 +63,11 @@ public class GameScript : MonoBehaviour {
 
 			// handle remaining "saints"
 			for(int i = smallerHand; i < largerHand; i++) {
-				
-				CardData p1 = p1_cards[i];
-				CardData p2 = p2_cards[i];
 
 				if(p2_cards.Length > p1_cards.Length) {
-					player1.TakeDamage(p2.conversion_power);
+					player1.TakeDamage(p2_cards[i].conversion_power);
 				} else {
-					player2.TakeDamage(p1.conversion_power);
+					player2.TakeDamage(p1_cards[i].conversion_power);
 				}
 			}
 
@@ -81,19 +78,6 @@ public class GameScript : MonoBehaviour {
 	}
 
 	void Update () {
-		
-
-	/*
-			1. Have two "player" objects assignable via inspector?
-				- an object with a "playerScript" [or perhaps with a script implementing a Player interface]
-			2. Draw cards from stack...
-			3. Select cards to player
-				- AI (random for now? heuristical?)
-				- Player: select cards, press "Done"/"Finish Turn" whatever
-			4. Play the round
-			5. Replenish cards
-			6. Rinse and repeat
-	*/
-
 	}
+	
 }
