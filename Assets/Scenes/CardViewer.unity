@@ -152,6 +152,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114822387750729786, guid: ecab90cba24471c4ca26efff126637e1,
+        type: 2}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114822387750729786, guid: ecab90cba24471c4ca26efff126637e1,
+        type: 2}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 114967248041355000, guid: ecab90cba24471c4ca26efff126637e1,
         type: 2}
       propertyPath: m_havePropertiesChanged
@@ -172,22 +182,6 @@ Prefab:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114822387750729786, guid: ecab90cba24471c4ca26efff126637e1,
-        type: 2}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114822387750729786, guid: ecab90cba24471c4ca26efff126637e1,
-        type: 2}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114180892251651802, guid: ecab90cba24471c4ca26efff126637e1,
-        type: 2}
-      propertyPath: cardData
-      value: 
-      objectReference: {fileID: 11400000, guid: dd3fe00dd65056f408a1036948d78078,
-        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecab90cba24471c4ca26efff126637e1, type: 2}
   m_IsPrefabAsset: 0

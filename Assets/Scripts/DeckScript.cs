@@ -18,7 +18,7 @@ public class DeckScript : MonoBehaviour {
 	public int shuffleIterations = 1;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 
 		// building the deck
 		List<CardData> tempDeck = new List<CardData>();

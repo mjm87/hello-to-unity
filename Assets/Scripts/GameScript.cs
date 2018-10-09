@@ -20,6 +20,15 @@ public class GameScript : MonoBehaviour {
 		players.Add(player1);
 		players.Add(player2);
 
+		// kick off the game loop
+		StartCoroutine(GameLoop());
+	}
+
+	private IEnumerator GameLoop(){
+		
+
+		yield return new WaitForSeconds(0.1f);
+		
 		foreach(IPlayer p in players){
 			p.DrawCards(startingNumberOfCards);
 		}
