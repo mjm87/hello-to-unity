@@ -9,6 +9,8 @@ public class PlayerScript : MonoBehaviour, IPlayer {
 	private DeckScript deck;
 	private List<CardData> cards;
 
+	private float faith = 100f;
+
 	// selecting mode
 	List<CardData> selected;
 	private bool isSelecting = false;
@@ -60,5 +62,12 @@ public class PlayerScript : MonoBehaviour, IPlayer {
 		cards.Reverse();
 		GetComponent<CardHandScript>().Display(cards);
 		return selected.ToArray();
+	}
+
+	public void TakeDamage(float damage) {
+		faith -= damage;
+	}
+	public bool isStillAlive() {
+		return faith > 0f;
 	}
 }

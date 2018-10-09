@@ -9,5 +9,8 @@ interface IPlayer {
 	bool isFinishedSelecting();
 	
 	CardData[] GetSelectedCards();
+
+	void TakeDamage(float damage);
+	bool isStillAlive();
 	
 }

@@ -8,6 +8,8 @@ public class AIPlayerScript : MonoBehaviour, IPlayer {
 	private GameObject deckObject;
 	private DeckScript deck;
 
+	private float faith = 100f;
+
 	private CardData[] selected;
 
 	// Use this for initialization 	
@@ -27,6 +29,8 @@ public class AIPlayerScript : MonoBehaviour, IPlayer {
 	public void StartSelecting() {
 		// todo: select card(s)
 		// randomly???
+		//TODO: determine how many to select
+		//TODO: determine which cards to select
 	}
 
 	public bool isFinishedSelecting() {
@@ -35,5 +39,12 @@ public class AIPlayerScript : MonoBehaviour, IPlayer {
 
 	public CardData[] GetSelectedCards() {
 		return selected;
+	}
+
+	public void TakeDamage(float damage) {
+		faith -= damage;
+	}
+	public bool isStillAlive() {
+		return faith > 0f;
 	}
 }

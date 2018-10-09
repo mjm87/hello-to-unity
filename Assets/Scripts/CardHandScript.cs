@@ -10,6 +10,7 @@ public class CardHandScript : MonoBehaviour {
 	[SerializeField]
 	private float cardSpacing = 2.3f;
 
+
 	private List<Transform> displayedCards = new List<Transform>();
 
 	public void Display(List<CardData> cards) {
