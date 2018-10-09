@@ -20,5 +20,6 @@ public class PlayerScript : MonoBehaviour, IPlayer {
 
 	public void DrawCards(int numberOfCards){
 		CardData[] cards = deck.DrawCards(numberOfCards);
+		GetComponent<CardHandScript>().Display(cards);
 	}
 }
