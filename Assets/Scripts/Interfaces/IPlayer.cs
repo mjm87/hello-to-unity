@@ -5,5 +5,7 @@ using UnityEngine;
 interface IPlayer {
 
 	void DrawCards(int number);
+	void StartSelecting();
+	bool isFinishedSelecting();
 	
 }

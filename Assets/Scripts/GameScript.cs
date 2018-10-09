@@ -17,22 +17,30 @@ public class GameScript : MonoBehaviour {
 	void Start () {	
 		player1 = Player1Object.GetComponent<IPlayer>();
 		player2 = Player2Object.GetComponent<IPlayer>();
-		players.Add(player1);
-		players.Add(player2);
 
 		// kick off the game loop
 		StartCoroutine(GameLoop());
 	}
 
 	private IEnumerator GameLoop(){
-		
 
+		// wait a tenth of a second to make sure everything is ready
 		yield return new WaitForSeconds(0.1f);
-		
-		foreach(IPlayer p in players){
-			p.DrawCards(startingNumberOfCards);
-		}
-		
+
+		// each player draws their cards
+		player1.DrawCards(startingNumberOfCards);
+		player2.DrawCards(startingNumberOfCards);
+
+		// each player selects some cards
+		player1.StartSelecting();
+		player2.StartSelecting();
+		yield return new WaitUntil( () => 
+			player1.isFinishedSelecting() && 
+			player2.isFinishedSelecting()
+		);			
+
+		// each player plays the cards
+
 	}
 
 	void Update () {

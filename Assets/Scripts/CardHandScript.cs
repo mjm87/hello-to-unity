@@ -26,6 +26,7 @@ public class CardHandScript : MonoBehaviour {
 			// create the card
 			Transform card = Instantiate<Transform>(cardPrefab, position, Quaternion.identity);
 			card.GetComponent<CardScript>().cardData = cardData;
+			card.GetComponent<CardScript>().player = GetComponent<PlayerScript>();
 			card.localScale = card.localScale * .75f;
 
 			// find the next slot for the next card

@@ -6,6 +6,7 @@ using TMPro;
 public class CardScript : MonoBehaviour {
 
     public CardData cardData;
+    public PlayerScript player;
 
     // current "stats"
     private float faith;            // sorta like health
@@ -25,11 +26,6 @@ public class CardScript : MonoBehaviour {
         regularScale = transform.localScale;
         hoverScale = regularScale * 1.2f;
     }
-	
-	// Update is called once per frame
-	void Update () {
-
-	}
 
     // update the data values on the card
     private void rerender() {
@@ -48,10 +44,23 @@ public class CardScript : MonoBehaviour {
 
 
     void OnMouseOver() {
-        transform.localScale = hoverScale;
+        if(inSelectingMode()) {
+            transform.localScale = hoverScale;
+        }
     }
 
     void OnMouseExit() {
         transform.localScale = regularScale;
+    }
+
+    void OnMouseDown() {
+        if(inSelectingMode()) {
+            player.Select(cardData);
+            transform.localScale = hoverScale;
+            regularScale = hoverScale;
+        }
+    }
+    private bool inSelectingMode() {
+        return !player.isFinishedSelecting();
     }
 }

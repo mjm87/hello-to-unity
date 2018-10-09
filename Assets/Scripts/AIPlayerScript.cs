@@ -21,4 +21,13 @@ public class AIPlayerScript : MonoBehaviour, IPlayer {
 	public void DrawCards(int numberOfCards){
 		CardData[] cards = deck.DrawCards(numberOfCards);
 	}
+
+	public void StartSelecting() {
+		// todo: select card(s)
+		// randomly???
+	}
+
+	public bool isFinishedSelecting() {
+		return true;
+	}
 }
