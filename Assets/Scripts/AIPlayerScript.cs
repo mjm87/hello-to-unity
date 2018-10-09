@@ -11,6 +11,7 @@ public class AIPlayerScript : MonoBehaviour, IPlayer {
 	private float faith = 100f;
 
 	private CardData[] selected;
+	private CardData[] cards;
 
 	// Use this for initialization 	
 	void Start () {
@@ -23,14 +24,15 @@ public class AIPlayerScript : MonoBehaviour, IPlayer {
 	}
 
 	public void DrawCards(int numberOfCards){
-		CardData[] cards = deck.DrawCards(numberOfCards);
+		cards = deck.DrawCards(numberOfCards);
 	}
 
 	public void StartSelecting() {
-		// todo: select card(s)
-		// randomly???
-		//TODO: determine how many to select
-		//TODO: determine which cards to select
+		int num = Random.Range(1,cards.Length-1)-1;
+		selected = new CardData[num];
+		for(int i = 0; i < num; i++) {
+			selected[i] = cards[Random.Range(1,cards.Length-1)];
+		}
 	}
 
 	public bool isFinishedSelecting() {
