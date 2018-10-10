@@ -8,16 +8,15 @@ public class CardHandScript : MonoBehaviour {
 	private Transform cardPrefab, cardSpawner;
 
 	[SerializeField]
-	private float cardSpacing = 2.3f;
+	private float cardSpacing = 2.3f,
+				  cardScaling = 0.75f;
 
 
 	private List<Transform> displayedCards = new List<Transform>();
 
 	public void Display(List<CardData> cards) {
 
-		// clean the slate
-		removeDisplayedCards();
-		displayedCards = new List<Transform>();
+		ClearDisplay();
 
 		// place the first card at the cardSpawner's position
 		Vector3 position = cardSpawner.position;
@@ -28,7 +27,9 @@ public class CardHandScript : MonoBehaviour {
 			Transform card = Instantiate<Transform>(cardPrefab, position, Quaternion.identity);
 			card.GetComponent<CardScript>().cardData = cardData;
 			card.GetComponent<CardScript>().player = GetComponent<PlayerScript>();
-			card.localScale = card.localScale * .75f;
+			card.parent = transform;
+			// rescaling
+			card.localScale = card.localScale * cardScaling;
 
 			// find the next slot for the next card
 			position += Vector3.right * cardSpacing;
@@ -37,6 +38,15 @@ public class CardHandScript : MonoBehaviour {
 			displayedCards.Add(card);
 
 		}
+	}
+
+	public void Display(CardData[] cards){
+		Display(new List<CardData>(cards));
+	}
+
+	public void ClearDisplay(){
+		removeDisplayedCards();
+		displayedCards = new List<Transform>();
 	}
 
 	private void removeDisplayedCards(){

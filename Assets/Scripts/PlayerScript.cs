@@ -41,6 +41,7 @@ public class PlayerScript : MonoBehaviour, IPlayer {
 		isSelecting = true;
 		selected = new List<CardData>();
 		DoneSelectingButton.gameObject.SetActive(true);
+		GetComponent<CardHandScript>().Display(cards);
 	}
 
 	public bool isFinishedSelecting(){
@@ -52,6 +53,7 @@ public class PlayerScript : MonoBehaviour, IPlayer {
 		foreach(CardData card in selected){
 			deck.Discard(card);
 		}
+		GetComponent<CardHandScript>().ClearDisplay();
 	}
 
 	public void Select(CardData card) {
@@ -65,7 +67,6 @@ public class PlayerScript : MonoBehaviour, IPlayer {
 	}
 
 	public CardData[] GetSelectedCards(){
-		GetComponent<CardHandScript>().Display(cards);
 		return selected.ToArray();
 	}
 

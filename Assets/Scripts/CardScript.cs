@@ -72,6 +72,6 @@ public class CardScript : MonoBehaviour {
         }
     }
     private bool inSelectingMode() {
-        return !player.isFinishedSelecting();
+        return player != null && !player.isFinishedSelecting();
     }
 }

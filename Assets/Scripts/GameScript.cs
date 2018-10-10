@@ -13,10 +13,17 @@ public class GameScript : MonoBehaviour {
 	[SerializeField]
 	private int startingNumberOfCards = 5;
 
-	// Use this for initialization
+	[SerializeField]
+	private GameObject player1DisplayObject, player2DisplayObject;
+	private CardHandScript playerDisplay, aiDisplay;
+
 	void Start () {	
+
+		// initialization
 		player1 = Player1Object.GetComponent<IPlayer>();
 		player2 = Player2Object.GetComponent<IPlayer>();
+		playerDisplay = player1DisplayObject.GetComponent<CardHandScript>();
+		aiDisplay = player2DisplayObject.GetComponent<CardHandScript>();
 
 		// kick off the game loop
 		StartCoroutine(GameLoop());
@@ -48,15 +55,18 @@ public class GameScript : MonoBehaviour {
 			CardData[] p2_cards = player2.GetSelectedCards();
 
 			// Temporary display of round via terminal output
-			Debug.LogFormat("Round {0}", round++);
-			Debug.Log("Player 1 played: ");
-			foreach(CardData card in p1_cards){
-				Debug.LogFormat("{0}: {1},{2}", card.name, card.conversion_power, card.faith);
-			}
-			Debug.Log("Player 2 played: ");
-			foreach(CardData card in p2_cards){
-				Debug.LogFormat("{0}: {1},{2}", card.name, card.conversion_power, card.faith);
-			}
+			// Debug.LogFormat("Round {0}", round++);
+			// Debug.Log("Player 1 played: ");
+			// foreach(CardData card in p1_cards){
+			// 	Debug.LogFormat("{0}: {1},{2}", card.name, card.conversion_power, card.faith);
+			// }
+			// Debug.Log("Player 2 played: ");
+			// foreach(CardData card in p2_cards){
+			// 	Debug.LogFormat("{0}: {1},{2}", card.name, card.conversion_power, card.faith);
+			// }
+
+			playerDisplay.Display(p1_cards);
+			aiDisplay.Display(p2_cards);
 
 			int smallerHand = Mathf.Min(p1_cards.Length, p2_cards.Length);
 			int largerHand = Mathf.Max(p1_cards.Length, p2_cards.Length);
@@ -87,13 +97,21 @@ public class GameScript : MonoBehaviour {
 			Debug.LogFormat("Player 1: {0}", player1.GetHealth());
 			Debug.LogFormat("Player 2: {0}", player2.GetHealth());
 
-			// draw next card
-			player1.DrawCards(1);
-			player2.DrawCards(1);
-		}
+			if(player1.isStillAlive() && !player2.isStillAlive()) Debug.Log("Hey. You won! I knew you could do it.");
+			else if(player2.isStillAlive() && !player1.isStillAlive()) {
+				Debug.Log("The computer won... Better luck next time.");
+			} else {
 
-		if(player1.isStillAlive()) Debug.Log("The computer won... Better luck next time.");
-		else Debug.Log("Hey. You won! I knew you could do it.");
+				yield return new WaitUntil( () => Input.anyKey);
+
+				playerDisplay.ClearDisplay();
+				aiDisplay.ClearDisplay();
+
+				// draw next card
+				player1.DrawCards(1);
+				player2.DrawCards(1);
+			}
+		}
 	}
 
 	void Update () {
