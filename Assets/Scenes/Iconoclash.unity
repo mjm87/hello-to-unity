@@ -180,7 +180,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Done?
+  m_Text: Finish Turn
 --- !u!222 &12340651
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -218,6 +218,8 @@ MonoBehaviour:
   Player1Object: {fileID: 808387005}
   Player2Object: {fileID: 1219512792}
   startingNumberOfCards: 5
+  player1DisplayObject: {fileID: 1091440181}
+  player2DisplayObject: {fileID: 1888702293}
 --- !u!4 &299920299
 Transform:
   m_ObjectHideFlags: 0
@@ -292,6 +294,7 @@ MonoBehaviour:
   cardPrefab: {fileID: 4857594289357484, guid: ecab90cba24471c4ca26efff126637e1, type: 2}
   cardSpawner: {fileID: 981822044}
   cardSpacing: 2.3
+  cardScaling: 0.75
 --- !u!1 &981822043
 GameObject:
   m_ObjectHideFlags: 0
@@ -382,6 +385,50 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1091440181
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1091440182}
+  - component: {fileID: 1091440183}
+  m_Layer: 0
+  m_Name: RoundDisplay_Player
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1091440182
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1091440181}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4.04, y: -2.16, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1091440183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1091440181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2337eaa4c8d1ab9419284a0f71cf805a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardPrefab: {fileID: 4857594289357484, guid: ecab90cba24471c4ca26efff126637e1, type: 2}
+  cardSpawner: {fileID: 1091440182}
+  cardSpacing: 3
+  cardScaling: 1
 --- !u!1 &1111390289
 GameObject:
   m_ObjectHideFlags: 0
@@ -645,6 +692,50 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deckObject: {fileID: 2037690073}
+--- !u!1 &1888702293
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1888702294}
+  - component: {fileID: 1888702295}
+  m_Layer: 0
+  m_Name: RoundDisplay_AI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1888702294
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1888702293}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4.04, y: 2.37, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1888702295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1888702293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2337eaa4c8d1ab9419284a0f71cf805a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardPrefab: {fileID: 4857594289357484, guid: ecab90cba24471c4ca26efff126637e1, type: 2}
+  cardSpawner: {fileID: 1888702294}
+  cardSpacing: 3
+  cardScaling: 1
 --- !u!1 &2037690073
 GameObject:
   m_ObjectHideFlags: 0
