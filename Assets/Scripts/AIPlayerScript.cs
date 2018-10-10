@@ -40,13 +40,21 @@ public class AIPlayerScript : MonoBehaviour, IPlayer {
 	}
 
 	public CardData[] GetSelectedCards() {
+		foreach(CardData card in selected){
+			deck.Discard(card);
+		}
 		return selected;
 	}
 
 	public void TakeDamage(float damage) {
 		faith -= damage;
 	}
+
 	public bool isStillAlive() {
 		return faith > 0f;
+	}
+
+	public float GetHealth(){
+		return faith;
 	}
 }

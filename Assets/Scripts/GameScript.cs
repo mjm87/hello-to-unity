@@ -31,6 +31,8 @@ public class GameScript : MonoBehaviour {
 		player1.DrawCards(startingNumberOfCards);
 		player2.DrawCards(startingNumberOfCards);
 
+		int round = 1;
+
 		while (player1.isStillAlive() && player2.isStillAlive()) {
 
 			// each player selects some cards
@@ -44,6 +46,17 @@ public class GameScript : MonoBehaviour {
 			// each player plays the cards
 			CardData[] p1_cards = player1.GetSelectedCards();
 			CardData[] p2_cards = player2.GetSelectedCards();
+
+			// Temporary display of round via terminal output
+			Debug.LogFormat("Round {0}", round++);
+			Debug.Log("Player 1 played: ");
+			foreach(CardData card in p1_cards){
+				Debug.LogFormat("{0}: {1},{2}", card.name, card.conversion_power, card.faith);
+			}
+			Debug.Log("Player 2 played: ");
+			foreach(CardData card in p2_cards){
+				Debug.LogFormat("{0}: {1},{2}", card.name, card.conversion_power, card.faith);
+			}
 
 			int smallerHand = Mathf.Min(p1_cards.Length, p2_cards.Length);
 			int largerHand = Mathf.Max(p1_cards.Length, p2_cards.Length);
@@ -71,10 +84,16 @@ public class GameScript : MonoBehaviour {
 				}
 			}
 
+			Debug.LogFormat("Player 1: {0}", player1.GetHealth());
+			Debug.LogFormat("Player 2: {0}", player2.GetHealth());
+
 			// draw next card
 			player1.DrawCards(1);
 			player2.DrawCards(1);
 		}
+
+		if(player1.isStillAlive()) Debug.Log("The computer won... Better luck next time.");
+		else Debug.Log("Hey. You won! I knew you could do it.");
 	}
 
 	void Update () {

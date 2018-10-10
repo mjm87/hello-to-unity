@@ -65,7 +65,6 @@ public class PlayerScript : MonoBehaviour, IPlayer {
 	}
 
 	public CardData[] GetSelectedCards(){
-		cards.Reverse();
 		GetComponent<CardHandScript>().Display(cards);
 		return selected.ToArray();
 	}
@@ -75,5 +74,9 @@ public class PlayerScript : MonoBehaviour, IPlayer {
 	}
 	public bool isStillAlive() {
 		return faith > 0f;
+	}
+
+	public float GetHealth(){
+		return faith;
 	}
 }

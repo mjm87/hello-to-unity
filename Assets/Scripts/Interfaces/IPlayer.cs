@@ -12,5 +12,7 @@ interface IPlayer {
 
 	void TakeDamage(float damage);
 	bool isStillAlive();
+
+	float GetHealth();
 	
 }
