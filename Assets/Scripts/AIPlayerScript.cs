@@ -28,10 +28,23 @@ public class AIPlayerScript : MonoBehaviour, IPlayer {
 	}
 
 	public void StartSelecting() {
-		int num = Random.Range(1,cards.Length-1)-1;
+		// selecting how many cards to play (randomly)
+		int num = Random.Range(1,cards.Length-1);
+
+		List<int> selectedIndexes = new List<int>();
 		selected = new CardData[num];
+
+		// selecting the cards at random
 		for(int i = 0; i < num; i++) {
-			selected[i] = cards[Random.Range(1,cards.Length-1)];
+			int randIdx = Random.Range(0,cards.Length-1);
+			// but not including previously picked cards
+			if(!selectedIndexes.Contains(randIdx)) {
+				selected[i] = cards[randIdx];
+				selectedIndexes.Add(randIdx);
+			} else {
+				i--;		// handling reselection in the case of collisions
+			}
+
 		}
 	}
 
